@@ -1,3 +1,8 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+/**
+ * Esste archivo son las configuraciones comunes que comparte el webvpack
+ * es decir esta configuración siempre estara en dev y prod o cualquier otro planeta
+ */
 module.exports = {
     module: {
         // El objetivo de un loader, es decirle 
@@ -19,10 +24,14 @@ module.exports = {
                         presets: ['@babel/preset-react', '@babel/preset-env'],
                         plugins: ['@babel/plugin-transform-runtime']
                     }
-
                 } 
             }
 
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html'
+        })
+    ]
 }

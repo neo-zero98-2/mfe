@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     module: {
         // El objetivo de un loader, es decirle 
@@ -24,5 +26,10 @@ module.exports = {
             }
 
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html'
+        })
+    ]
 }
