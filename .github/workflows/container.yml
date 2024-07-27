@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest # github actions preparara la mv con ubuntu
 
-    steaps: # pasos para deployar el contenedor
+    steps: # pasos para deployar el contenedor
     - uses: shinyinc/action-aws-cli@v1.2
     - run: npm install
     - run: npm run build
