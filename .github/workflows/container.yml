@@ -11,7 +11,7 @@ defaults:
   run: 
     working-directory: packages/container #los cambios se ejecutaran en esta ruta
 
-job:
+jobs:
   build:
     runs-on: ubuntu-latest # github actions preparara la mv con ubuntu
 
