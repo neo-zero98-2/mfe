@@ -9,7 +9,8 @@ const domain = process.env.PRODUCTION_DOMAIN;
 const prodConfig = {
     mode: 'production',
     output: {
-        filename: '[name].[contenthash].js'
+        filename: '[name].[contenthash].js', // opcion que cambia el nombrado de los archivos que se compilan
+        publicPath: '/container/latest/' // antepone la ruta /container/latest/ a filename quedando /container/latest/[name].[contenthash].js
     },
     plugins: [
         new ModuleFederationPlugin({
