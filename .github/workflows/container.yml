@@ -9,7 +9,7 @@ on: # evento que esta atento la accion
 
 defaults:
   run: 
-    working-directory: packages/container/ #los cambios se ejecutaran en esta ruta
+    working-directory: mfe/packages/container/ #los cambios se ejecutaran en esta ruta
 
 jobs:
   build:
