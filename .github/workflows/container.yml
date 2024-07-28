@@ -17,9 +17,6 @@ jobs:
 
     steps:
     - uses: shinyinc/action-aws-cli@v1.2
-    - run: ls -l /usr/bin/bash
-    - run: ls -ld packages/container
-    - run: pwd
     - run: npm install
     - run: npm run build
     
