@@ -16,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: shinyinc/action-aws-cli@v1.2
-    - run: which bash 
+    - uses: actions/checkout@v2
     - run: npm install
     - run: npm run build
     
