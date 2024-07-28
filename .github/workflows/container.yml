@@ -9,7 +9,7 @@ on: # evento que esta atento la accion
 
 defaults:
   run: 
-    working-directory: mfe/packages/container/ #los cambios se ejecutaran en esta ruta
+    working-directory: packages/container/ #los cambios se ejecutaran en esta ruta
 
 jobs:
   build:
@@ -17,6 +17,7 @@ jobs:
 
     steps: # pasos para deployar el contenedor
     - uses: shinyinc/action-aws-cli@v1.2
+    - run: pwd
     - run: npm install
     - run: npm run build
     
