@@ -1,21 +1,21 @@
 name: deployd-container
 
-on:
-  push:
-    branches: 
+on: # evento que esta atento la accion
+  push: # tipo de evento
+    branches: # el evento esta pendiente a los cambios que se hagan en la rama main
       - main
     paths:
-      - 'packages/container/**'
+      - 'packages/container/**' # el evento ejecutara una accion cuando se detecta un cambio en esta ruta
 
 defaults:
   run: 
-    working-directory: packages/container
+    working-directory: packages/container #los cambios se ejecutaran en esta ruta
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # github actions preparara la mv con ubuntu
 
-    steps:
+    steps: # pasos para deployar el contenedor
     - uses: actions/checkout@v2
     - run: npm install
     - run: npm run build
