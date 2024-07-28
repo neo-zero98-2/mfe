@@ -1,21 +1,21 @@
 name: deployd-container
 
-on: # evento que esta atento la accion
-  push: # tipo de evento
+on:
+  push:
     branches: 
-      - main # el evento esta pendiente a los cambios que se hagan en la rama main
+      - main
     paths:
-      - 'packages/container/**' # el evento ejecutara una accion cuando se detecta un cambio en esta ruta
+      - 'packages/container/**'
 
 defaults:
   run: 
-    working-directory: packages/container #los cambios se ejecutaran en esta ruta
+    working-directory: packages/container
 
 jobs:
   build:
-    runs-on: ubuntu-latest # github actions preparara la mv con ubuntu
+    runs-on: ubuntu-latest
 
-    steps: # pasos para deployar el contenedor
+    steps:
     - uses: shinyinc/action-aws-cli@v1.2
     - run: ls -l /usr/bin/bash
     - run: ls -ld packages/container
