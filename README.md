@@ -110,3 +110,8 @@ Si vio el curso Si compro el curso [Microfrontends with React: A Complete Develo
 1. nos vamos a nuestro repositorio, en settings, luego en deployd keys 
 2. añadimos los valores de nuestro `container.yml` secrets.AWS_S3_BUCKET_NAME, secrets.AWS_ACCESS_KEY_ID y secrets.AWS_SECRET_ACCESS_KEY
 3. una vez creadas volvemos a hacer push con cambios en la carpeta container.
+
+`NOTA`: cada vez que se haga el proceso de build se tiene que agregar una invalidación en el cloudFront del o los archivo(s) que se hallan modificado. Esto aplica solo no se creo la accion con github actions.
+
+
+
