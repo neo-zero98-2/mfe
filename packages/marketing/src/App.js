@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Router } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles'
 import Pricing from './components/Pricing';
 import Album from './components/Landing';
@@ -14,16 +14,18 @@ const generateClassName = createGenerateClassName({
     productionPrefix: 'ma' 
 });
 
-export default () => {
+export default ({ history }) => {
     return (
         <React.Fragment>
             <StylesProvider generateClassName={generateClassName}>
-                <BrowserRouter>
+                {/* BrowserRouter: crea una copia del Historia de navegacion y crea una historia propia */}
+                {/* Router: creamos una copia de Historial de navegacion sin crear nuestra propia historia(recomendado para micrfront) */}
+                <Router history={history}> 
                     <Switch>
                         <Route exact path='/pricing' component={ Pricing }/>
                         <Route path='/' component={Album}/>
                     </Switch>
-                </BrowserRouter>
+                </Router>
             </StylesProvider>
         </React.Fragment>
     )
