@@ -16,12 +16,15 @@ export default () => {
             onNavigate: ({ pathname: nextPathname}) => {
                 const { pathname } = history.location;
                 if(pathname !== nextPathname){
+                    console.log("onNavigate marketing");
                     history.push(nextPathname);
                 }
-            }
+            },
+            initialPath: history.location.pathname
         });
 
-        history.listen(onParentNavigate);
+        const unilistener = history.listen(onParentNavigate);
+        return unilistener;
 
     }, []);
 

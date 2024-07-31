@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { createMemoryHistory, createBrowserHistory  } from 'history'; // toma la historia directamente del navegador
 
-const mount = (el, { onNavigate,  defaultHistory }) => {
-    const history = defaultHistory || createMemoryHistory();
+const mount = (el, { onNavigate,  defaultHistory, initialPath }) => {
+    const history = 
+        defaultHistory || 
+        createMemoryHistory({
+            initialEntries: [initialPath], // se le pasa una ruta por default al hisotory
+        });
     if(onNavigate){
         history.listen(onNavigate); //cuando detecta una navegacion llama a onNavigate
     }
@@ -26,6 +30,7 @@ const mount = (el, { onNavigate,  defaultHistory }) => {
         onParentNavigate: ({ pathname: nextPathname}) => {
             const { pathname } = history.location;
             if (pathname !== nextPathname) {
+                console.log("onParent marketing");
                 history.push(nextPathname);
             }
         }
