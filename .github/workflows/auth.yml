@@ -1,0 +1,34 @@
+name: deployd-auth
+
+on: # evento que esta atento la accion
+  push: # tipo de evento
+    branches: # el evento esta pendiente a los cambios que se hagan en la rama main
+      - main
+    paths:
+      - 'packages/auth/**' # el evento ejecutara una accion cuando se detecta un cambio en esta ruta
+
+defaults:
+  run: 
+    working-directory: packages/auth #los cambios se ejecutaran en esta ruta
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # github actions preparara la mv con ubuntu
+
+    steps: # pasos para deployar el contenedor
+    - uses: actions/checkout@v2
+    - run: npm install
+    - run: npm run build
+    
+    - uses: shinyinc/action-aws-cli@v1.2
+    - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/auth/latest # pegar los archivos del compilado a la ruta del bucket
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: "us-east-2"
+      
+    - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/auth/latest/remoteEntry.js" # crear invalidacion en cloudFront
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: "us-east-2"

@@ -6,12 +6,13 @@ import { useHistory } from 'react-router-dom';
  * !la funcion onNavigate no se manda a llamar nunca con el mfe auth
  * TODO: tratar de reparar este bug
  */
-export default () => {
+export default ({ onSignIn }) => {
     const ref = useRef(null);
     const history = useHistory();
 
     useEffect(() => {
         const { onParentNavigate } = mount(ref.current, {
+            initialPath: history.location.pathname,
             /**
              * onNavigate se usa para comunicar con el mfe marketing
              * y enviar datos desde el mfe marketing al mfe container
@@ -25,7 +26,7 @@ export default () => {
                     history.push(nextPathname);
                 }
             },
-            initialPath: history.location.pathname
+            onSignIn
         });
 
         history.listen(onParentNavigate);

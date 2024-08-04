@@ -14,7 +14,7 @@ const generateClassName = createGenerateClassName({
     productionPrefix: 'au' 
 });
 
-export default ({ history }) => {
+export default ({ history, onSignIn }) => {
     return (
         <React.Fragment>
             <StylesProvider generateClassName={generateClassName}>
@@ -22,8 +22,13 @@ export default ({ history }) => {
                 {/* Router: creamos una copia de Historial de navegacion sin crear nuestra propia historia(recomendado para micrfront) */}
                 <Router history={history}> 
                     <Switch>
-                        <Route exact path='/auth/signin' component={ Signin }/>
-                        <Route path='/auth/signup' component={SignUp}/>
+                        <Route exact path='/auth/signin'>
+                            <Signin onSignIn={ onSignIn }/>
+                        </Route>
+
+                        <Route path='/auth/signup' component={SignUp}>
+                            <SignUp onSignIn={ onSignIn }/>
+                        </Route>
                     </Switch>
                 </Router>
             </StylesProvider>

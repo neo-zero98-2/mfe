@@ -7,7 +7,7 @@ import { createMemoryHistory, createBrowserHistory  } from 'history'; // toma la
  * ! el history.listen(onNavigate) nunca se manda a  llamar porquetiene conflicto con el history.listen del mfe marketing
  * TODO: tratar de reparar este bug
 */
-const mount = (el, { onNavigate,  defaultHistory, initialPath }) => {
+const mount = (el, { onNavigate,  defaultHistory, initialPath, onSignIn }) => {
     const history = 
         defaultHistory || 
         createMemoryHistory({
@@ -19,7 +19,7 @@ const mount = (el, { onNavigate,  defaultHistory, initialPath }) => {
 
     ReactDOM.render(
         <React.Fragment>
-            <App history={ history }/>
+            <App history={ history } onSignIn={ onSignIn }/>
         </React.Fragment>,
         el
     );
