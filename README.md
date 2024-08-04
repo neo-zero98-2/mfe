@@ -1,5 +1,29 @@
 # MFE
 
+  ## 🎯 Overview
+  
+  Este es el proyecto final de microfrontends del curso de [Microfrontends with React: A Complete Developer's Guide](https://www.udemy.com/course/microfrontend-course/)
+
+### Installation
+  
+  1. Clone the repository:
+  
+     ```bash
+     git clone https://github.com/neo-zero98-2/mfe.git
+     cd project-name
+     ```
+  
+  2. Install dependencies:
+  
+     ```bash
+     npm install
+     ```
+  
+  3. Start the development server:
+     ```bash
+     npm start
+     ```
+
 ## 🚀 Despliegue en aws
 (Opcional)crear una accion [personalizada con github actions](https://docs.github.com/es/actions/quickstart) con el codigo que se encuentra en la ruta raiz de este proyecto `.github/workflows/container.yml` para que cada push que se haga al repo se despliegue en aws.
 

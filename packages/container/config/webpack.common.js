@@ -9,6 +9,7 @@ module.exports = {
         // a Webpack que procese algunos archivos
         // diferentes a medida que comenzamos 
         // a importarlos a nuestro proyecto.
+        // pueden ser archivos, imagenes, fuentes, etc.
 
         rules: [ 
             {
