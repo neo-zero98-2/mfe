@@ -53,7 +53,7 @@ Si compro el curso [Microfrontends with React: A Complete Developer's Guide
       | `Effect`    | Allow          |
       | `Principal` | *              |
       | `Actions`  | GetObject       |
-      | `Amazon Resource Name (ARN)`  | `{{ ARN del bucket }}` |
+      | `Amazon Resource Name (ARN)`  | `{{ ARN del bucket }}`/* |
 
    - **Step 3: Generate Policy**
    - **Step 4**: `copiar y pegar el json de la politica en politica del bucket(Bucket policy) y guardar`
